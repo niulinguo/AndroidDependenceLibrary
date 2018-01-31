@@ -1,0 +1,45 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    // Test
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    // Android Support
+    implementation "com.android.support:design:${rootProject.ext.dependencies.support_version}"
+    implementation "com.android.support:support-v4:${rootProject.ext.dependencies.support_version}"
+    api "com.android.support:appcompat-v7:${rootProject.ext.dependencies.support_version}"
+    implementation "com.android.support:cardview-v7:${rootProject.ext.dependencies.support_version}"
+    implementation "com.android.support:support-v13:${rootProject.ext.dependencies.support_version}"
+
+    // MultiDex
+    implementation 'com.android.support:multidex:1.0.2'
+
+    // Annotations
+    compileOnly 'org.jetbrains:annotations-java5:15.0'
+
+    // Constraint Layout
+    api 'com.android.support.constraint:constraint-layout:1.0.2'
+}
